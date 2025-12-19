@@ -137,7 +137,7 @@ ClassWebsite 项目目前采用 **CC BY-NC 4.0** 许可证。我们收到部分�
 
 - **@jiugulixiaoniu** (项目创始人 & 核心维护者)
 - @wjm13206 (代码贡献)
-- **@RuanhoR** (架构建议与代码审查)
+- **@RuanhoR** (架构建议)
 
 ### 版权与授权
 
