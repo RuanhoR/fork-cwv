@@ -29,7 +29,7 @@
 非商业性使用 — 你不得将本作品用于商业用途
 简单来说，只要您不将它用于商业用途，并且署上原作者的名字，您可以将它用于任何用途（具体还请查看CC BY-NC 4.0 License）
 
-Attention:我们更换了许可证，可以转到最下方查看或进入本讨论[ClassWebsite 项目许可证正式变更公告](https://github.com/jiugulixiaoniu/CWBS-ClassWebsite/discussions/18)
+Attention:我们即将更换许可证，可以转到最下方查看或进入本讨论[ClassWebsite 项目许可证正式变更公告](https://github.com/jiugulixiaoniu/CWBS-ClassWebsite/discussions/18)
 
 ---
 
@@ -156,5 +156,6 @@ Attention:我们更换了许可证，可以转到最下方查看或进入本讨�
 ---
 
 **JGL Studio**  
+
 
 
