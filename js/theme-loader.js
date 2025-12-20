@@ -81,31 +81,31 @@ class ThemeLoader {
                 const configTheme = this.siteConfig.getUIStyle().toLowerCase();
                 console.log('通过getUIStyle获取主题:', configTheme);
                 // 验证主题值是否有效
-                if (['win10', 'win11'].includes(configTheme)) {
+                if (ThemeLoader.StyleList.includes(configTheme)) {
                     this.currentTheme = configTheme;
                     console.log('主题设置已更新为:', this.currentTheme);
                 } else {
                     console.warn(`无效的主题设置: ${configTheme}，使用默认主题 win11`);
-                    this.currentTheme = 'win11';
+                    this.currentTheme = ThemeLoader.defaultStyle;
                 }
             } else if (this.siteConfig && this.siteConfig.site && this.siteConfig.site.uiStyle) {
                 // 兼容旧版本访问方式
                 const configTheme = this.siteConfig.site.uiStyle.toLowerCase();
                 console.log('通过site.uiStyle获取主题:', configTheme);
-                if (['win10', 'win11'].includes(configTheme)) {
+                if (ThemeLoader.StyleList.includes(configTheme)) {
                     this.currentTheme = configTheme;
                     console.log('主题设置已更新为:', this.currentTheme);
                 } else {
                     console.warn(`无效的主题设置: ${configTheme}，使用默认主题 win11`);
-                    this.currentTheme = 'win11';
+                    this.currentTheme = ThemeLoader.defaultStyle;
                 }
             } else {
                 console.warn('未找到UI主题配置，使用默认主题 win11');
-                this.currentTheme = 'win11';
+                this.currentTheme = ThemeLoader.defaultStyle;
             }
         } catch (error) {
             console.error('从配置加载主题失败:', error);
-            console.warn('使用默认主题 win11');
+            this.currentTheme = ThemeLoader.defaultStyle;
         }
         console.log('最终主题设置:', this.currentTheme);
     }
