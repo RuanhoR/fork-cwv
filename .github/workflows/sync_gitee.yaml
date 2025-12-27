@@ -11,7 +11,7 @@ jobs:
       - name: Init Git in dist
         run: |
           cd dist
-          git init
+          git init -b main
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git remote add origin git@github.com:jiugulixiaoniu/CWBS-ClassWebsite-show.git
