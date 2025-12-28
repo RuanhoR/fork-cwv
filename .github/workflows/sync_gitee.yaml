@@ -12,20 +12,35 @@ jobs:
         run: |
           npm install && npm run build
       
-      - name: Init Git in dist
+      - name: Init Git in dist & Configure SSH
         run: |
+          # 1. 先创建 .ssh 目录（解决核心错误），并设置正确权限
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh  # .ssh 目录必须是 700 权限，否则 SSH 会拒绝使用
+          
+          # 2. 写入 SSH 私钥（此时目录已存在，不会报错）
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          
+          # 3. 设置私钥 600 权限（Git/SSH 强制要求）
+          chmod 600 ~/.ssh/id_ed25519
+          
+          # 4. 初始化 dist 目录 Git 仓库
           cd dist
           git init -b main
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git remote add origin git@github.com:jiugulixiaoniu/cwBs-classwebsite-show.git
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519 
       
       - name: Push to Target
         run: |
-          ssh-keyscan github.com >> ~/.ssh/known_hosts 
+          # 1. 预先信任 GitHub 主机（避免交互式验证）
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts  # known_hosts 文件设置 644 权限
+          
+          # 2. 验证 SSH 连接（可选，用于排错）
           ssh -T git@github.com
+          
+          # 3. 提交并强制推送代码
           cd dist
           git add -A
           git commit -m "Deploy: ${{ github.sha }}"
