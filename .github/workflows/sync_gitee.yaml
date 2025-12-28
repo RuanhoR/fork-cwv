@@ -21,6 +21,7 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Push to Target
         run: |
+          ssh -T git@github.com
           cd dist
           git add -A
           git commit -m "Deploy: ${{ github.sha }}"
